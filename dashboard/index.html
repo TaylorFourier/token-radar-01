@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Field Glass — token launch radar</title>
+<link rel="stylesheet" href="glass.css">
+</head>
+<body>
+<header class="mast">
+  <div class="brand">
+    <svg class="mark" viewBox="0 0 48 48" aria-hidden="true">
+      <circle cx="24" cy="24" r="18" fill="none" stroke="currentColor" stroke-width="1.4"/>
+      <circle cx="24" cy="24" r="10" fill="none" stroke="currentColor" stroke-width="1.4"/>
+      <circle cx="24" cy="24" r="2.4" fill="currentColor"/>
+      <path d="M24 4v6M24 38v6M4 24h6M38 24h6" stroke="currentColor" stroke-width="1.4"/>
+    </svg>
+    <div>
+      <p class="eyebrow">Field Glass</p>
+      <h1>Token launch radar</h1>
+    </div>
+  </div>
+  <dl class="mast-stats" id="mast-stats"></dl>
+</header>
+
+<section class="thesis" id="thesis">
+  <div>
+    <h2>What the number is</h2>
+    <p id="thesis-copy">An unlaunched protocol, one with no CoinGecko id and no symbol, is valued as a launch claim: TVL times 0.22, times a structure scale, a tenure curve that peaks near 450 days listed without a token, a damped seven-day TVL change, chain breadth, and a small-TVL confidence haircut. A protocol that already records a token uses 0.018 instead of 0.22, times the share of TVL its market cap has not already covered and a season that shrinks as the listing gets older. Bridges, exchange books, liquid staking receipts, versioned names, and exchange-prefixed names are scaled down. No protocol slug is pinned to a rank.</p>
+  </div>
+  <ol class="formula" id="formula">
+    <li><span>Unlaunched</span><code>round(TVL × 0.22 × structure × tenure × growth × breadth × confidence)</code></li>
+    <li><span>Recorded token</span><code>round(TVL × 0.018 × structure × growth × breadth × confidence × gap × season)</code></li>
+  </ol>
+</section>
+
+<div class="workspace">
+  <section class="board-pane">
+    <form class="controls" id="controls">
+      <label class="search">Search
+        <input id="q" type="search" placeholder="Name, slug, chain" autocomplete="off">
+      </label>
+      <div class="lanes" role="group" aria-label="Lane">
+        <button type="button" data-lane="unlaunched" aria-pressed="true">Unlaunched</button>
+        <button type="button" data-lane="watchlist">Floor list</button>
+        <button type="button" data-lane="recorded">Token recorded</button>
+        <button type="button" data-lane="all">Entire book</button>
+      </div>
+      <label>Category
+        <select id="category"><option value="">All categories</option></select>
+      </label>
+      <label>Chain
+        <select id="chain"><option value="">All chains</option></select>
+      </label>
+      <label class="check">7-day
+        <span><input id="rising" type="checkbox"> TVL up only</span>
+      </label>
+    </form>
+    <div class="leaders" id="leaders"></div>
+    <p class="count" id="count"></p>
+    <div class="table-scroll">
+      <table id="board">
+        <caption class="sr">Protocols ranked by implied value</caption>
+        <thead>
+          <tr>
+            <th><button type="button" data-sort="rank">Rank</button></th>
+            <th><button type="button" data-sort="name">Protocol</button></th>
+            <th><button type="button" data-sort="lane">Lane</button></th>
+            <th><button type="button" data-sort="category">Category</button></th>
+            <th><button type="button" data-sort="tvl">TVL</button></th>
+            <th><button type="button" data-sort="change">7-day</button></th>
+            <th><button type="button" data-sort="age">Listed</button></th>
+            <th><button type="button" data-sort="implied">Implied</button></th>
+          </tr>
+        </thead>
+        <tbody id="rows"></tbody>
+      </table>
+    </div>
+  </section>
+  <aside class="detail" id="detail" aria-live="polite"></aside>
+</div>
+<script src="score.js"></script>
+<script src="../data.js"></script>
+<script src="glass.js"></script>
+</body>
+</html>
