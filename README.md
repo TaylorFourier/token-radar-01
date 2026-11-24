@@ -28,4 +28,10 @@ The run writes, in order:
 
 Open `out/dashboard/index.html`. The page reads `out/data.js` and does not use the network. Sort the columns, filter by lane, category, chain, or a rising seven-day change, and open a protocol for its valuation factors and farm plan.
 
-Screenshots are not in this tree yet. Add three images under `screenshots/` (the board, a protocol detail, and a filtered view) and run the command again to produce `dossier.json`.
+The three captured views are in this tree:
+
+- `screenshots/1-board.png` — the unlaunched board
+- `screenshots/2-detail.png` — Sentora Curator farm plan scrolled into view
+- `screenshots/3-filtered.png` — Floor list with the seven-day TVL-up filter
+
+A local run copies `screenshots/` into the output directory and writes `dossier.json` there. That file is generated at runtime and stays out of the tree.
